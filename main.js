@@ -31,6 +31,22 @@ class Card {
         this.value = value
 
     }
+    //creat a getter fxn that can be called for color anywhere
+    get colors(){
+        return this.suit === '♣' || '♠' ? 'black' : 'red';
+    }
+    //use the following as a guide to create divs dianamically
+    //<div class = 'card red data-value = '9 ♣'>
+    // ♠
+    // </div>
+getHTML(){
+    let cardDiv = document.createElement('div');
+    cardDiv.innerText = this.suit;
+    cardDiv.classList.add('card', this.color);
+    //change the number on the card dianamically by:
+    cardDiv.dataset.value = `${this.value} ${this.suit}`
+    return cardDiv
+}
 
 };
 function freshDeck(){

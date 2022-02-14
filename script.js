@@ -1,7 +1,9 @@
 import Deck from './main.js';
 
+
+const compCarSlot = document.querySelector('.computer-card-slot')
 const deck = new Deck();
 
 deck.shuffle()
 
-console.log(deck.cards);
+compCarSlot.appendChild(deck.cards[0].getHTML())
