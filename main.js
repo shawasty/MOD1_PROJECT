@@ -31,6 +31,12 @@ class Card {
         this.value = value
 
     }
+getHTML(){
+    const cardDiv = document.createElement('div');
+    cardDiv.innerText = this.suit;
+    cardDiv.classList.add('card')
+
+}
 
 };
 function freshDeck(){
