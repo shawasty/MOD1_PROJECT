@@ -16,7 +16,7 @@ export default class Deck {
     shuffle(){
         
         //simple way to suffle
-        for (let i =this.lenCards -1; i > 0; i--){
+        for (let i = this.lenCards -1; i > 0; i--){
             const newIndex = Math.floor(Math.random() * (i + 1));
             //the following assigns new indexes from the newly gained index to the original
             const oldIndex = this.cards[i];
@@ -35,7 +35,7 @@ class Card {
         this.value = value
 
     }
-    //creat a getter fxn that can be called for color anywhere
+    //create a getter fxn that can be called for color anywhere
     get colors(){
         return this.suit === '♣' || '♠' ? 'black' : 'red';
     }
@@ -46,7 +46,7 @@ class Card {
 getHTML(){
     let cardDiv = document.createElement('div');
     cardDiv.innerText = this.suit;
-    cardDiv.classList.add('card', this.color);
+    cardDiv.classList.add('card', this.colors);
     //change the number on the card dianamically by:
     cardDiv.dataset.value = `${this.value} ${this.suit}`
     return cardDiv

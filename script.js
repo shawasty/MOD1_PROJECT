@@ -11,17 +11,21 @@ const text = document.querySelector('.text');
 
 let playerDeck, compuDeck;
 
+document.addEventListener
+
 startGame();  //this starts game immidiately before
 function startGame(){ 
 // let lenCards = this.cards.length;
 const deck = new Deck();
-deck.shuffle()
+deck.shuffle();
+// compCarSlot.appendChild(deck.cards[7].getHTML())
 //split into two equal parts of cards
 
 const midDeck = Math.ceil(deck.lenCards/2); 
 // console.log(midDeck)//note that lencard is defined in main.js as a gether function;
 playerDeck = new Deck(deck.cards.slice(0, midDeck));
-compuDeck = new Deck(deck.cards.slice(midDeck , deck.lenCards))
+compuDeck = new Deck(deck.cards.slice(midDeck , deck.lenCards));
+
 
 // console.log(playerDeck)
 // console.log(compuDeck)
