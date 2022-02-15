@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- since there are two js files, use source as the general js file. -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- since there are two js files, use source as the general js file. -->
     <script src="script.js" type="module" defer></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <title>CARD GAME</title>
-</head>
-<body>
-    <div class="computer-deck deck"></div>
-    <div class="computer-card-slot card-slot"></div>
-    <div class="text"></div>
-    <div class="player-deck deck"></div>
-    <div class="player-card-slot card-slot"></div>
-    
-</body>
+  </head>
+  <body>
+    <header>
+      <h3>&hearts; &spades; Shawasty's Card War Game &diams; &clubs;</h3>
+      <ul>
+          <li>ABOUT</li>
+          <li>INSTRUCTIONS</li>
+
+      </ul>
+    </header>
+
+    <section class="tiles">
+      <div class="computer-deck deck"></div>
+      <div class="computer-card-slot card-slot"></div>
+      <div class="text"></div>
+      <div class="player-deck deck"></div>
+      <div class="player-card-slot card-slot"></div>
+    </section>
+  </body>
 </html>
