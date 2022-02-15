@@ -13,6 +13,14 @@ export default class Deck {
     get lenCards(){
         return this.cards.length;
     };
+
+    pop(){
+        return this.cards.shift()
+    }
+
+    push(card){
+        this.cards.push(card)
+    }
     shuffle(){
         
         //simple way to suffle
@@ -23,7 +31,6 @@ export default class Deck {
             this.cards[newIndex] = this.cards[i];
             this.cards[i] = oldIndex;
 
-
         }
         // this.cards.sort((a,b)=>Math.random()- .5)
     }
@@ -33,7 +40,6 @@ class Card {
     constructor(suit , value){
         this.suit = suit
         this.value = value
-
     }
     //create a getter fxn that can be called for color anywhere
     get colors(){
