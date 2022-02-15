@@ -9,10 +9,14 @@ export default class Deck {
     constructor(cards = freshDeck()) {
         this.cards = cards
     };
+
+    get lenCards(){
+        return this.cards.length;
+    };
     shuffle(){
-        let lenCards = this.cards.length;
+        
         //simple way to suffle
-        for (let i =lenCards -1; i > 0; i--){
+        for (let i =this.lenCards -1; i > 0; i--){
             const newIndex = Math.floor(Math.random() * (i + 1));
             //the following assigns new indexes from the newly gained index to the original
             const oldIndex = this.cards[i];
