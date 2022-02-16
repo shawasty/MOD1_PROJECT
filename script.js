@@ -30,6 +30,9 @@ let playerDeck, compuDeck
 let flipSound = new Audio('sounds/shuff1.wav')
 let audio = new Audio('sounds/playi1.mp3');
 let winSound = new Audio('sounds/win1.wav')
+let drawSound = new Audio('sounds/draw.wav')
+let loseSound = new Audio('sounds/try_again.wav')
+
 let inSession = false;  //set default value to false
 let stopGame = false;
 
@@ -47,7 +50,7 @@ startGame();  //this starts game immidiately before
 function startGame(){ 
     const deck = new Deck();
     deck.shuffle();
-    audio.play();
+    // audio.play();
 // compCarSlot.appendChild(deck.cards[7].getHTML())
 //split into two equal parts of cards
 
@@ -97,12 +100,14 @@ function flipcard(){
         //add emojie
     }   //  check if computerCard won
     else  if(roundWinner( computerCard, playerCard)){
-        text.innerText = 'Lose'
+        text.innerText = 'Lose';
+        loseSound.play();
         compuDeck.push(playerCard);
         compuDeck.push(computerCard);
         // add sound
         //add emojie
     } else{
+        drawSound.play()
         text.innerText = 'Draw'
         playerDeck.push(playerCard);
         compuDeck.push(computerCard);
