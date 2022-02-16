@@ -28,6 +28,7 @@ const text = document.querySelector('.text');
 const startBut = document.querySelector("#start");
 const resetBut = document.querySelector("#reset");
 const nextBut = document.querySelector("#next");
+const pausBut = document.querySelector("#pause");
 
 let playerDeck, compuDeck
 let flipSound = new Audio('sounds/shuff1.wav')
@@ -42,13 +43,18 @@ let stopGame = false;
 
 resetBut.addEventListener('click', ()=>{
    
-     return  startGame()     
+     return  startGame() 
 })
-// resetBut.addEventListener('click', ()=>{
-//         startReset()
+pausBut.addEventListener('click', ()=>{
+    if(audio.paused){
+        playAudio()
+    }else {
+        pauseAudio()
+    }
+   
+        // pauseAudio()
 
-    
-// })
+})
 nextBut.addEventListener('click', ()=>{
     if (inSession){
         startReset()
@@ -134,7 +140,13 @@ function flipcard(){
     
 
 }
-
+function playAudio() {
+    audio.play();
+  }
+  
+  function pauseAudio() {
+    audio.pause();
+  }
 function updateDeckCount(){
 
     computerDeckEle.innerText = compuDeck.lenCards;
