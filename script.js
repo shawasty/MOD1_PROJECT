@@ -42,10 +42,11 @@ let loseSound = new Audio('sounds/try_again.wav')
 let inSession = false;  //set default value to false
 let stopGame = false;
 
-let clockCounter = 10;
+let clockCounter = '';
 
 resetBut.addEventListener('click', ()=>{
     startGame();
+    clockCounter = 10;
     nextBut.style.display = 'inline-block' 
 })
 musicBut.addEventListener('click', ()=>{
@@ -110,6 +111,9 @@ function startReset(){
     compCarSlot.innerHTML ='';
     playerCaSlot.innerHTML ='';
     text.innerText ='';
+    
+    
+
     
     
 
@@ -185,7 +189,7 @@ function gameOver(deck){
         console.log('player win')
     }else {
        
-        console.log('it was adraw')
+       text.innerText = 'It was a draw.'
     }
     nextBut.style.display = 'none' 
     // if (clockCounter === 0){
