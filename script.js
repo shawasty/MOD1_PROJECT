@@ -25,10 +25,14 @@ const compCarSlot = document.querySelector('.computer-card-slot');
 const computerDeckEle = document.querySelector('.computer-deck');
 const playerDeckEle = document.querySelector('.player-deck');
 const text = document.querySelector('.text');
+const startBut = document.querySelector("#start");
+const resetBut = document.querySelector("#reset");
+const nextBut = document.querySelector("#next");
 
 let playerDeck, compuDeck
 let flipSound = new Audio('sounds/shuff1.wav')
 let audio = new Audio('sounds/playi1.mp3');
+            
 let winSound = new Audio('sounds/win1.wav')
 let drawSound = new Audio('sounds/draw.wav')
 let loseSound = new Audio('sounds/try_again.wav')
@@ -36,21 +40,31 @@ let loseSound = new Audio('sounds/try_again.wav')
 let inSession = false;  //set default value to false
 let stopGame = false;
 
-document.addEventListener('click', ()=>{
+resetBut.addEventListener('click', ()=>{
+   
+     return  startGame()     
+})
+// resetBut.addEventListener('click', ()=>{
+//         startReset()
+
+    
+// })
+nextBut.addEventListener('click', ()=>{
     if (inSession){
         startReset()
     }
     else{
         flipcard()
     };
-
 })
+
 
 startGame();  //this starts game immidiately before
 function startGame(){ 
     const deck = new Deck();
     deck.shuffle();
-    // audio.play();
+    audio.play();
+    audio.volume = 0.1;  // decreases audio volume
 // compCarSlot.appendChild(deck.cards[7].getHTML())
 //split into two equal parts of cards
 
@@ -62,11 +76,9 @@ function startGame(){
     stopGame = false;
 
 
-
-
 // console.log(playerDeck)
 // console.log(compuDeck)
-startReset()    //this cleans out deck before start of game
+startReset()    //this cleans out deck before start of next game
 
 }
 function startReset(){
@@ -92,20 +104,18 @@ function flipcard(){
     updateDeckCount()
 // check with the roundWinner function's condition, if playerCard won
     if(roundWinner(playerCard, computerCard)){
-        text.innerText = 'Win';
+        text.innerText = 'Win 😊';
         winSound.play();
         playerDeck.push(playerCard);
         playerDeck.push(computerCard);
-        //add sound
         //add emojie
     }   //  check if computerCard won
     else  if(roundWinner( computerCard, playerCard)){
-        text.innerText = 'Lose';
+        text.innerText = 'Lose 😢';
         loseSound.play();
         compuDeck.push(playerCard);
         compuDeck.push(computerCard);
-        // add sound
-        //add emojie
+ 
     } else{
         drawSound.play()
         text.innerText = 'Draw'
@@ -140,14 +150,3 @@ function gameOver(deck){
     return deck.lenCards === 0;
 }
 
-// PlaySound = function () {
-//     var audio = new Audio('sounds/playi1.mp3');
-//     audio.loop = false;
-//     audio.play(); 
-// }
-
-// audio.play();
-
-// const bubSound1 = document.createElement("audio");
-// bubSound1.src = "sounds/bubbl1.wav";
-// // compCarSlot.appendChild(deck.cards[0].getHTML())
