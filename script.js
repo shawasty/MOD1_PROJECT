@@ -26,10 +26,10 @@ const computerDeckEle = document.querySelector('.computer-deck');
 const playerDeckEle = document.querySelector('.player-deck');
 const text = document.querySelector('.text');
 
-
-
-
 let playerDeck, compuDeck
+let flipSound = new Audio('sounds/shuff1.wav')
+let audio = new Audio('sounds/playi1.mp3');
+let winSound = new Audio('sounds/win1.wav')
 let inSession = false;  //set default value to false
 let stopGame = false;
 
@@ -47,6 +47,7 @@ startGame();  //this starts game immidiately before
 function startGame(){ 
     const deck = new Deck();
     deck.shuffle();
+    audio.play();
 // compCarSlot.appendChild(deck.cards[7].getHTML())
 //split into two equal parts of cards
 
@@ -78,7 +79,7 @@ function startReset(){
 function flipcard(){
     inSession = true
     //get the first card from the deck
-
+    flipSound.play();
     const playerCard = playerDeck.pop();
     const computerCard = compuDeck.pop();
 
@@ -88,7 +89,8 @@ function flipcard(){
     updateDeckCount()
 // check with the roundWinner function's condition, if playerCard won
     if(roundWinner(playerCard, computerCard)){
-        text.innerText = 'Win'
+        text.innerText = 'Win';
+        winSound.play();
         playerDeck.push(playerCard);
         playerDeck.push(computerCard);
         //add sound
@@ -132,4 +134,15 @@ function roundWinner (card1, card2){
 function gameOver(deck){
     return deck.lenCards === 0;
 }
-// compCarSlot.appendChild(deck.cards[0].getHTML())
+
+// PlaySound = function () {
+//     var audio = new Audio('sounds/playi1.mp3');
+//     audio.loop = false;
+//     audio.play(); 
+// }
+
+// audio.play();
+
+// const bubSound1 = document.createElement("audio");
+// bubSound1.src = "sounds/bubbl1.wav";
+// // compCarSlot.appendChild(deck.cards[0].getHTML())
