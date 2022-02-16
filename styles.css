@@ -11,9 +11,10 @@ body{
 }
 header {
     /* margin: 10px 12 20px 15; */
-    color: rgb(248, 6, 6);
+    color: rgb(12, 12, 12);
     /* font-size: 1.2rem; */
     height: 90px;
+    font-size: large;
     align-items: center;
     justify-content: space-around;
     background-image:url(/images/head1.jpeg);
@@ -27,7 +28,7 @@ header ul li{
     height:60px;
     line-height: 60px;
     text-align: center;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .tiles {
@@ -36,7 +37,7 @@ header ul li{
   grid-template-columns: repeat(2, 14rem);
   grid-template-rows: 20rem 4rem 20rem;
   gap: 1.5rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   justify-content: center;
   padding-top: 5rem;
 }
@@ -110,4 +111,10 @@ header ul li{
   bottom: .5rem;
   right: .5rem;
   transform: rotate(180deg);
+}
+
+#mainbtn:active {
+  background: #345;
+  border: none;
+  color: white;
 }
