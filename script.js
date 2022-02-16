@@ -42,10 +42,11 @@ let loseSound = new Audio('sounds/try_again.wav')
 let inSession = false;  //set default value to false
 let stopGame = false;
 
-let clockCounter = '';
+let clockCounter = 10;
 
 resetBut.addEventListener('click', ()=>{
     startGame();
+    nextBut.style.display = 'inline-block' 
 })
 musicBut.addEventListener('click', ()=>{
     if(audio.paused){
@@ -66,32 +67,37 @@ nextBut.addEventListener('click', ()=>{
     };
 })
 //set a countdown timer for 
-let clockC=setInterval(function(){
-    clockCounter --;
-    if(clockCounter >= 0){
-        clockCountDown.innerHTML = clockCounter;
-    }
-    // if(clockCountDown === 0){
-    //     gameOver= true;
-    // }
 
-},1000)
+function timeIt(){
+    clockCounter --;
+    if(clockCounter > 0){
+        // console.log(clockCounter)
+        // startGame();
+        clockCountDown.innerHTML = clockCounter;
+    }else if(clockCounter === 0){
+        // console.log('hello')
+        gameOver();
+        clockCountDown.innerText = 'Game Over';
+        // clearInterval(clockC);
+    }
+}
+setInterval(timeIt,1000)
 
 startGame();  //this starts game immidiately before
 function startGame(){ 
     const deck = new Deck();
     deck.shuffle();
-    audio.play();
+    // audio.play();
     audio.volume = 0.1;  // decreases audio volume
 // compCarSlot.appendChild(deck.cards[7].getHTML())
 //split into two equal parts of cards
-    // clockC();
     const midDeck = Math.ceil(deck.lenCards/2); 
     // console.log(midDeck)//note that lencard is defined in main.js as a getter function;
     playerDeck = new Deck(deck.cards.slice(0, midDeck));
     compuDeck = new Deck(deck.cards.slice(midDeck , deck.lenCards));
     inSession = false;
     stopGame = false;
+    // clockCounter = 10;
 
 
 // console.log(playerDeck)
@@ -104,7 +110,7 @@ function startReset(){
     compCarSlot.innerHTML ='';
     playerCaSlot.innerHTML ='';
     text.innerText ='';
-    clockCounter = 30;
+    
     
 
     updateDeckCount()
@@ -144,14 +150,6 @@ function flipcard(){
         // add sound
     }
 
-    if (gameOver(playerDeck)){
-        text.innerText = 'You lose !!!';
-        stopGame = true
-    }else if(gameOver(compuDeck)){
-        text.innerText = 'You lose !!!';
-        stopGame = true
-    }
-    
 
 }
 function playAudio() {
@@ -173,7 +171,24 @@ function roundWinner (card1, card2){
     
 }
 
+// function gameOver(deck){
+//     return deck.lenCards === 20;
+// }
 function gameOver(deck){
-    return deck.lenCards === 0;
+    if (compuDeck.lenCards > playerDeck.lenCards){
+        text.innerText = 'You lose !!!';
+        stopGame = true
+        console.log('computer wins')
+    } else if (compuDeck.lenCards < playerDeck.lenCards){
+        text.innerText = 'You lose !!!';
+        stopGame = true
+        console.log('player win')
+    }else {
+       
+        console.log('it was adraw')
+    }
+    nextBut.style.display = 'none' 
+    // if (clockCounter === 0){
+    //   stopGame = true;
+    // }
 }
-
