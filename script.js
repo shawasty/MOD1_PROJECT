@@ -24,16 +24,17 @@ const playerCaSlot = document.querySelector('.player-card-slot');
 const compCarSlot = document.querySelector('.computer-card-slot');
 const computerDeckEle = document.querySelector('.computer-deck');
 const playerDeckEle = document.querySelector('.player-deck');
+const clockCountDown = document.querySelector('#timeNum');
+
 const text = document.querySelector('.text');
 const startBut = document.querySelector("#start");
 const resetBut = document.querySelector("#reset");
 const nextBut = document.querySelector("#next");
-const pausBut = document.querySelector("#pause");
+const musicBut = document.querySelector("#music");
 
 let playerDeck, compuDeck
 let flipSound = new Audio('sounds/shuff1.wav')
-let audio = new Audio('sounds/playi1.mp3');
-            
+let audio = new Audio('sounds/playi1.mp3');       
 let winSound = new Audio('sounds/win1.wav')
 let drawSound = new Audio('sounds/draw.wav')
 let loseSound = new Audio('sounds/try_again.wav')
@@ -41,11 +42,12 @@ let loseSound = new Audio('sounds/try_again.wav')
 let inSession = false;  //set default value to false
 let stopGame = false;
 
+let clockCounter = '';
+
 resetBut.addEventListener('click', ()=>{
-   
-     return  startGame() 
+    startGame();
 })
-pausBut.addEventListener('click', ()=>{
+musicBut.addEventListener('click', ()=>{
     if(audio.paused){
         playAudio()
     }else {
@@ -63,7 +65,17 @@ nextBut.addEventListener('click', ()=>{
         flipcard()
     };
 })
+//set a countdown timer for 
+let clockC=setInterval(function(){
+    clockCounter --;
+    if(clockCounter >= 0){
+        clockCountDown.innerHTML = clockCounter;
+    }
+    // if(clockCountDown === 0){
+    //     gameOver= true;
+    // }
 
+},1000)
 
 startGame();  //this starts game immidiately before
 function startGame(){ 
@@ -73,7 +85,7 @@ function startGame(){
     audio.volume = 0.1;  // decreases audio volume
 // compCarSlot.appendChild(deck.cards[7].getHTML())
 //split into two equal parts of cards
-
+    // clockC();
     const midDeck = Math.ceil(deck.lenCards/2); 
     // console.log(midDeck)//note that lencard is defined in main.js as a getter function;
     playerDeck = new Deck(deck.cards.slice(0, midDeck));
@@ -92,6 +104,8 @@ function startReset(){
     compCarSlot.innerHTML ='';
     playerCaSlot.innerHTML ='';
     text.innerText ='';
+    clockCounter = 30;
+    
 
     updateDeckCount()
 
@@ -142,9 +156,10 @@ function flipcard(){
 }
 function playAudio() {
     audio.play();
+    audio.volume = 0.1; 
   }
   
-  function pauseAudio() {
+function pauseAudio() {
     audio.pause();
   }
 function updateDeckCount(){
