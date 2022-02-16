@@ -137,7 +137,19 @@ margin-right:-20px;
 #reset:hover{
   background-color: rgb(245, 81, 81);
 }
-
+#music:hover{
+  background-color: rgb(6, 168, 68);
+}
 .copyright{
   font-weight: 68em;
+}
+.checks{
+/* text-align:right; */
+margin-right:90px;
+display:flex
+}
+#timer{
+  /* text-align: end;
+  display:flex */
+  
 }
