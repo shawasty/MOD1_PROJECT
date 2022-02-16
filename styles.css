@@ -61,12 +61,10 @@ header ul li{
 }
 
 .computer-deck {
-  background-color: rgb(211, 208, 53);
   background-image:url(/images/card4.jpeg);
 }
 
 .player-deck {
-  background-color: rgb(42, 94, 206);
   background-image:url(/images/card3.jpeg);
 }
 
