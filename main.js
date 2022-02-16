@@ -43,7 +43,7 @@ class Card {
     }
     //create a getter fxn that can be called for color anywhere
     get colors(){
-        return this.suit === '♣' || '♠' ? 'black' : 'red';
+        return this.suit === '♣' ||this.suit=== '♠' ? 'black' : 'red';
     }
     //use the following as a guide to create divs dianamically
     //<div class = 'card red data-value = '9 ♣'>

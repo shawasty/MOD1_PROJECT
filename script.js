@@ -94,7 +94,7 @@ function flipcard(){
         //add sound
         //add emojie
     }   //  check if computerCard won
-    else  if(!roundWinner(playerCard, computerCard)){
+    else  if(roundWinner( computerCard, playerCard)){
         text.innerText = 'Lose'
         compuDeck.push(playerCard);
         compuDeck.push(computerCard);
