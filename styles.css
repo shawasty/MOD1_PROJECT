@@ -123,6 +123,8 @@ button{
   line-height: 60px;
   border-radius: 5rem;
   border: 2px solid rgb(119, 6, 6);
+  font-size: 1.2rem;
+ 
 }
 .row{
 text-align:center;
@@ -130,8 +132,12 @@ margin-left:-20px;
 margin-right:-20px;
 }
 #next:hover{
-  background-color: rgb(160, 225, 241);
+  background-color: rgb(94, 168, 228);
 }
 #reset:hover{
   background-color: rgb(245, 81, 81);
+}
+
+.copyright{
+  font-weight: 68em;
 }
