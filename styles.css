@@ -1,18 +1,18 @@
 /* *, *::after, *::before { 
   box-sizing: border-box;
 } */
+html{
+  width: 100%;
+  min-width: 1000px;
+  height: auto;
+}
 body{
     height: 100%;
     text-align: center;
     background-size: cover;
-   
-   
-}
-/* html{
-  border-radius: 2rem;
-  border: 2px solid rgb(119, 6, 6);
 
-} */
+}
+
 header {
     /* margin: 10px 12 20px 15; */
     color: rgb(250, 4, 4);
@@ -55,7 +55,7 @@ header ul li{
   align-items: center;
   font-size: 3rem;
   border-radius: 1.5rem;
-  color: black;
+  color: (250, 4, 4);
   /* background-image:url(/images/card5.jpeg); */
   user-select: none;
 }
@@ -73,7 +73,8 @@ header ul li{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 40px;
+  color: rgb(250, 4, 4);
 }
 
 .card {
@@ -145,11 +146,11 @@ margin-right:-20px;
 }
 .checks{
 /* text-align:right; */
-margin-right:90px;
-display:flex
-}
-#timer{
-  /* text-align: end;
-  display:flex */
-  
+margin-right:50px;
+display:flex;
+font-size: 30px;
+font-family: 'Courier New', Courier, monospace;
+margin-inline-start: 50px;
+
+
 }
