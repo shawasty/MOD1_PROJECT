@@ -44,6 +44,9 @@ let congratSound = new Audio("sounds/congratulations.wav");
 let youWinSound = new Audio("sounds/winStrings.wav");
 let gameOveSound = new Audio("sounds/game_over.wav");
 let loseEffect = new Audio("sounds/lose.wav");
+let winingEffect = new Audio("sounds/wining.wav");
+let losinEffect = new Audio("sounds/damaged1.wav");
+let drawinSound = new Audio("sounds/healed2")
 
 let inSession = false; //set default value to false
 let stopGame = false;
@@ -52,7 +55,7 @@ let clockCounter = 60;
 
 resetBut.addEventListener("click", () => {
   startGame();
-  clockCounter = 60;
+  clockCounter = 30;
   nextBut.style.display = "inline-block";
 });
 musicBut.addEventListener("click", () => {
@@ -132,17 +135,20 @@ function flipcard() {
   if (roundWinner(playerCard, computerCard)) {
     text.innerText = "Win 😊";
     winSound.play();
+    winingEffect.play();
     playerDeck.push(playerCard);
     playerDeck.push(computerCard);
     //add emojie
   } //  check if computerCard won
   else if (roundWinner(computerCard, playerCard)) {
     text.innerText = "Lose 😢";
+    losinEffect.play();
     loseEffect.play();
     compuDeck.push(playerCard);
     compuDeck.push(computerCard);
   } else {
     // drawSound.play();
+    drawinSound.play();
     text.innerText = "Draw";
     playerDeck.push(playerCard);
     compuDeck.push(computerCard);
