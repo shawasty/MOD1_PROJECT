@@ -24,12 +24,15 @@ const compCarSlot = document.querySelector(".computer-card-slot");
 const computerDeckEle = document.querySelector(".computer-deck");
 const playerDeckEle = document.querySelector(".player-deck");
 const clockCountDown = document.querySelector("#timeNum");
-
+const avatarBox = document.querySelector('.avatar-box');
+const playerAvatar= document.querySelector('#player-avatar')
+//DOM
 const text = document.querySelector(".text");
 const startBut = document.querySelector("#start");
 const resetBut = document.querySelector("#reset");
 const nextBut = document.querySelector("#next");
 const musicBut = document.querySelector("#music");
+// avatar
 
 let playerDeck, compuDeck;
 let flipSound = new Audio("sounds/shuff1.wav");
@@ -41,15 +44,18 @@ let congratSound = new Audio("sounds/congratulations.wav");
 let youWinSound = new Audio("sounds/winStrings.wav");
 let gameOveSound = new Audio("sounds/game_over.wav");
 let loseEffect = new Audio("sounds/lose.wav");
+let winingEffect = new Audio("sounds/wining.wav");
+let losinEffect = new Audio("sounds/damaged1.wav");
+let drawinSound = new Audio("sounds/healed2")
 
 let inSession = false; //set default value to false
 let stopGame = false;
 
-let clockCounter = 15;
+let clockCounter = 60;
 
 resetBut.addEventListener("click", () => {
   startGame();
-  clockCounter = 10;
+  clockCounter = 30;
   nextBut.style.display = "inline-block";
 });
 musicBut.addEventListener("click", () => {
@@ -129,17 +135,20 @@ function flipcard() {
   if (roundWinner(playerCard, computerCard)) {
     text.innerText = "Win 😊";
     winSound.play();
+    winingEffect.play();
     playerDeck.push(playerCard);
     playerDeck.push(computerCard);
     //add emojie
   } //  check if computerCard won
   else if (roundWinner(computerCard, playerCard)) {
     text.innerText = "Lose 😢";
+    losinEffect.play();
     loseEffect.play();
     compuDeck.push(playerCard);
     compuDeck.push(computerCard);
   } else {
     // drawSound.play();
+    drawinSound.play();
     text.innerText = "Draw";
     playerDeck.push(playerCard);
     compuDeck.push(computerCard);
@@ -178,7 +187,34 @@ function gameOver(deck) {
     text.innerText = "It was a draw 😊 ";
   }
   nextBut.style.display = "none";
-  // if (clockCounter === 0){
-  //   stopGame = true;
-  // }
+ 
 }
+
+//avatar
+function generateAvatar(
+  initials,
+  foregroundColor ='white',
+  backgroundColor = 'crimson'
+  ){
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = 100;
+    canvas.height = 100;
+
+    // draw background
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    //Draw text
+    ctx.font = 'bold 30px Assistant';
+    ctx.fillStyle = foregroundColor;
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'middle';
+    ctx.fillText(initials, canvas.width/2, canvas.height/2);
+
+    // avatarBox.appendChild(canvas);
+    return canvas.toDataURL('image/png');
+
+  }
+  playerAvatar.src = generateAvatar('GA','white','crimson')
