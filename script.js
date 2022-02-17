@@ -51,7 +51,7 @@ let drawinSound = new Audio("sounds/healed2")
 let inSession = false; //set default value to false
 let stopGame = false;
 
-let clockCounter = 60;
+let clockCounter = 30;
 
 resetBut.addEventListener("click", () => {
   startGame();
